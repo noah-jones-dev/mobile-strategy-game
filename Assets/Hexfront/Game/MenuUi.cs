@@ -161,7 +161,9 @@ namespace Hexfront
             var saveRow = Ui.Row(right, 6, 44);
             Ui.Input(saveRow, "Map name", _mapName, v => _mapName = v).Size(-1, -1, 1);
             Ui.Button(saveRow, "Save", SaveCurrentMap, 18).Size(80, -1);
-            Ui.Button(right, "Saved Maps / Enter Code", ShowMaps, 19).Size(-1, 46);
+            var mapRow = Ui.Row(right, 6, 46);
+            Ui.Button(mapRow, "Saved Maps / Code", ShowMaps, 18).Size(-1, -1, 1);
+            Ui.Button(mapRow, "Copy Code", () => GUIUtility.systemCopyBuffer = _cfg.ToCode(), 16).Size(110, -1);
             Ui.Button(right, mode == MatchMode.LanHost ? "Open Lobby" : "Start Match", StartFromSetup, 26, Ui.Good).Size(-1, 70);
             Ui.Button(right, "Back", ShowMain, 20).Size(-1, 46);
             Changed();

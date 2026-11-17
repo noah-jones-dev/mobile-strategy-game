@@ -13,6 +13,7 @@ namespace Hexfront
     ///   Planning -> (both players locked in) -> Simulation.Resolve -> playback -> Planning ...
     /// All game rules live in Hexfront.Core; this class only moves data between the pieces.
     /// </summary>
+    [DefaultExecutionOrder(-100)] // read input before the camera and UI scripts run each frame
     public sealed class App : MonoBehaviour
     {
         public static App Instance { get; private set; }
@@ -545,7 +546,7 @@ namespace Hexfront
         void EnterGameOver()
         {
             CurrentPhase = Phase.GameOver;
-            SaveSystem.DeleteMatch();
+            if (Mode != MatchMode.LanClient) SaveSystem.DeleteMatch(); // a client never owns the save file
             Board.OverlayBegin(); Board.OverlayEnd();
             bool won = State.Winner == LocalPlayer;
             if (Mode != MatchMode.PassAndPlay) Sfx.Play(won ? Sfx.Id.Victory : Sfx.Id.Defeat);

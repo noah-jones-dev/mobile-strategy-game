@@ -52,11 +52,11 @@ namespace Hexfront
 
             // ---- selection panel (bottom-left)
             _selPanel = Ui.Box("Selection", root, Ui.PanelColor).rectTransform;
-            _selPanel.Pin(new Vector2(0, 0), new Vector2(84, 10), new Vector2(470, 204));
+            _selPanel.Pin(new Vector2(0, 0), new Vector2(84, 10), new Vector2(480, 232));
             var selCol = Ui.Column(_selPanel, 4, 10);
             selCol.Stretch();
             _selTitle = Ui.Label(selCol, "", 23, TextAnchor.MiddleLeft, Ui.Accent).Size(-1, 28);
-            _selBody = Ui.Label(selCol, "", 17, TextAnchor.UpperLeft).Size(-1, 96);
+            _selBody = Ui.Label(selCol, "", 16, TextAnchor.UpperLeft).Size(-1, 124);
             _selButtons = Ui.Row(selCol, 6, 46);
 
             // ---- right column (bottom-right)
@@ -68,7 +68,7 @@ namespace Hexfront
 
             // ---- list panel (build menu / production / orders)
             _listPanel = Ui.Box("List", root, Ui.PanelColor).rectTransform;
-            _listPanel.Pin(new Vector2(1, 0), new Vector2(-10, 234), new Vector2(390, 400));
+            _listPanel.Pin(new Vector2(1, 0), new Vector2(-10, 234), new Vector2(390, 410));
             var listCol = Ui.Column(_listPanel, 6, 10);
             listCol.Stretch();
             var head = Ui.Row(listCol, 6, 40);
